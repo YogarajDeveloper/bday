@@ -14,7 +14,7 @@ import kovilHema from "./assets/kovilTwoHema.jpeg";
 import hemzKodai from "./assets/HemzKodai.jpeg";
 import dayanHema from "./assets/DayanHema.jpeg";
 import hemaAndMeee from "./assets/HemaAndMeee.jpeg";
-import birthdayMusic from "./assets/audio/Unakkul-Naane-MassTamilan.dev.mp3";
+import birthdayMusic from "./assets/audio/Unakkul-Naane-MassTamilan.mp3";
 
 /* =========================
    YOUR DATA
@@ -351,6 +351,15 @@ function App() {
   ========================= */
 
   const nextStep = () => {
+    if (audioRef.current && !musicPlaying) {
+      audioRef.current
+        .play()
+        .then(() => setMusicPlaying(true))
+        .catch((err) => {
+          console.warn("Audio autoplay blocked by browser:", err);
+        });
+    }
+
     setStep((current) => Math.min(current + 1, 6));
     window.scrollTo({
       top: 0,
@@ -369,20 +378,22 @@ function App() {
       <audio
         ref={audioRef}
         src={birthdayMusic}
+        preload="auto"
         loop
+        onPlay={() => setMusicPlaying(true)}
+        onPause={() => setMusicPlaying(false)}
       />
 
       {/* MUSIC BUTTON */}
-      {step >= 2 && (
-        <button
-          className={`music-button ${
-            musicPlaying ? "playing" : ""
-          }`}
-          onClick={toggleMusic}
-        >
-          {musicPlaying ? "🎵" : "🔇"}
-        </button>
-      )}
+      <button
+        className={`music-button ${
+          musicPlaying ? "playing" : ""
+        }`}
+        onClick={toggleMusic}
+        title={musicPlaying ? "Mute music" : "Play music"}
+      >
+        {musicPlaying ? "🎵" : "🔇"}
+      </button>
 
 
       {/* =========================
