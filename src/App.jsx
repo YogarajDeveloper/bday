@@ -14,7 +14,7 @@ import kovilHema from "./assets/kovilTwoHema.jpeg";
 import hemzKodai from "./assets/HemzKodai.jpeg";
 import dayanHema from "./assets/DayanHema.jpeg";
 import hemaAndMeee from "./assets/HemaAndMeee.jpeg";
-// import birthdaySong from "./assets/birthday-song.mp3";
+import birthdayMusic from "./assets/audio/Unakkul-Naane-MassTamilan.dev.mp3";
 
 /* =========================
    YOUR DATA
@@ -98,20 +98,20 @@ const timeline = [
     image: photoOne,
   },
   {
-    date: "2021",
+    date: "2022",
     title: "Jolly Moments ✨",
     text: "Evvalavu sirippu, sandhosham, and marakka mudiyatha nalla memories!",
     image: photoTwo,
   },
   {
-    date: "2023",
+    date: "2025",
     title: "Adventures 🏔️",
     text: "Time poga poga namma bond innum romba special and strong aachu. 🥰",
     image: hemzKodai,
   },
   {
-    date: "2025",
-    title: "Eppovum Sirippu 🥰",
+    date: "2026",
+    title: "Eppovum Sirippu illai morappu 🥰",
     text: "Innum neraya beautiful memories create panni eppovume sirichite irukanum! ❤️",
     image: photoFour,
   },
@@ -368,7 +368,7 @@ function App() {
       {/* MUSIC */}
       <audio
         ref={audioRef}
-        src="/music/birthday-song.mp3"
+        src={birthdayMusic}
         loop
       />
 
@@ -690,11 +690,11 @@ function App() {
 
               <div className="music-details">
                 <strong>
-                  Your Special Song
+                  Unakkul Naane 🎵
                 </strong>
 
                 <span>
-                  Made for this moment ❤️
+                  Special song for {birthdayPerson} ❤️
                 </span>
               </div>
 
