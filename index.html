@@ -9,5 +9,12 @@
   <body style="background: #140b20; margin: 0;">
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
+    <script>
+      if (window.location.hostname !== 'localhost' && window.location.hostname !== '127.0.0.1') {
+        if (document.querySelector('script[src*="main.jsx"]')) {
+          window.location.replace('./dist/' + window.location.search + window.location.hash);
+        }
+      }
+    </script>
   </body>
 </html>
